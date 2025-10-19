@@ -1,6 +1,6 @@
 # 🏡 StockHome / StockMalin  
 **Application mobile de gestion de stock domestique**
-
+[En Read the French version](./README_EN.md)
 ---
 
 ## 🎯 Objectif
