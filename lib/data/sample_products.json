@@ -1,0 +1,38 @@
+[
+  {
+    "id": "p1",
+    "name": "Bread",
+    "location": "Kitchen",
+    "quantity": 1,
+    "total": 10,
+    "image": "",
+    "note": ""
+  },
+  {
+    "id": "p2",
+    "name": "Apple",
+    "location": "Kitchen",
+    "quantity": 5,
+    "total": 10,
+    "image": "",
+    "note": "Expires in 3 days"
+  },
+  {
+    "id": "p3",
+    "name": "Canned Tuna",
+    "location": "Basement",
+    "quantity": 1,
+    "total": 5,
+    "image": "",
+    "note": "Low stock"
+  },
+  {
+    "id": "p4",
+    "name": "Baked Beans",
+    "location": "Kitchen",
+    "quantity": 9,
+    "total": 500,
+    "image": "",
+    "note": "Expires in 5 days"
+  }
+]
