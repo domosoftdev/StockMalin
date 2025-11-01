@@ -24,6 +24,7 @@ class ShoppingListPage extends StatelessWidget {
           }
           final p = items[i];
           return ListTile(
+            // ignore: deprecated_member_use
             leading: Radio(value: p.id, groupValue: null, onChanged: (_) {}),
             title: Text(p.name),
             subtitle: Text(p.note.isNotEmpty ? p.note : "${p.quantity} left"),

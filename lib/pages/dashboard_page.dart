@@ -40,7 +40,7 @@ class DashboardPage extends StatelessWidget {
                 child: Container(
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(color: navy, borderRadius: BorderRadius.circular(12)),
-                  child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: const [
+                  child: const Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                     Text("Perishable items", style: TextStyle(color: Colors.white70)),
                     SizedBox(height: 6),
                     Text("3", style: TextStyle(color: Colors.white, fontSize: 28, fontWeight: FontWeight.bold)),
@@ -52,7 +52,7 @@ class DashboardPage extends StatelessWidget {
                 child: Container(
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(color: Colors.green, borderRadius: BorderRadius.circular(12)),
-                  child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: const [
+                  child: const Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
                     Text("Low Stock", style: TextStyle(color: Colors.white70)),
                     SizedBox(height: 6),
                     Text("5", style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)),
@@ -108,11 +108,11 @@ class DashboardPage extends StatelessWidget {
       child: SizedBox(
         height: 66,
         child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-          _NavItem(icon: Icons.home, label: "Dashboard", active: true),
+          const _NavItem(icon: Icons.home, label: "Dashboard", active: true),
           _NavItem(icon: Icons.inventory_2_outlined, label: "Inventory", onTap: () => Navigator.pushNamed(context, "/inventory")),
           const SizedBox(width: 48),
-          _NavItem(icon: Icons.qr_code_scanner, label: "Scan"),
-          _NavItem(icon: Icons.settings, label: "Settings"),
+          const _NavItem(icon: Icons.qr_code_scanner, label: "Scan"),
+          const _NavItem(icon: Icons.settings, label: "Settings"),
         ]),
       ),
     );
