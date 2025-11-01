@@ -1,8 +1,8 @@
 import "package:flutter_test/flutter_test.dart";
 import "package:flutter/material.dart";
 import "package:provider/provider.dart";
-import "package:stockmalin/providers/product_provider.dart";
-import "package:stockmalin/pages/dashboard_page.dart";
+import 'package:stock_home/providers/product_provider.dart';
+import 'package:stock_home/pages/dashboard_page.dart';
 
 void main() {
   testWidgets("Dashboard loads and shows title", (WidgetTester tester) async {

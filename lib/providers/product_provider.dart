@@ -18,7 +18,12 @@ class ProductProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Product? findById(String id) => _items.firstWhere((p) => p.id == id, orElse: () => null);
+  Product? findById(String id) {
+    for (final p in _items) {
+      if (p.id == id) return p;
+    }
+    return null;
+  }
 
   void markConsumed(String id) {
     final p = findById(id);
