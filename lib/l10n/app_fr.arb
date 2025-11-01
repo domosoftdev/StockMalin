@@ -1,0 +1,12 @@
+{
+  "inventory": "Inventaire",
+  "shoppingList": "Liste de courses",
+  "addItem": "Ajouter un article",
+  "dashboard": "Tableau de bord",
+  "scan": "Scanner",
+  "settings": "Paramètres",
+  "martinFamily": "Famille Martin",
+  "perishableItems": "Articles périssables",
+  "lowStock": "Stock faible",
+  "useSoon": "À utiliser bientôt"
+}

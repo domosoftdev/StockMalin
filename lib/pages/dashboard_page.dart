@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import "package:provider/provider.dart";
 import "../providers/product_provider.dart";
+import '../l10n/app_localizations.dart';
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({Key? key}) : super(key: key);
@@ -12,6 +13,7 @@ class DashboardPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
     final prov = Provider.of<ProductProvider>(context);
     final items = prov.items;
     final useSoon = items.where((p) => p.note.isNotEmpty).toList();
@@ -29,7 +31,7 @@ class DashboardPage extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
           child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Row(children: [
-              const Expanded(child: Text("Martin Family", style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))),
+              Expanded(child: Text(l.martinFamily, style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))),
               IconButton(onPressed: () {}, icon: const Icon(Icons.notifications_none)),
               const CircleAvatar(child: Icon(Icons.person))
             ]),
@@ -40,8 +42,8 @@ class DashboardPage extends StatelessWidget {
                 child: Container(
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(color: navy, borderRadius: BorderRadius.circular(12)),
-                  child: const Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                    Text("Perishable items", style: TextStyle(color: Colors.white70)),
+                  child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                    Text(l.perishableItems, style: TextStyle(color: Colors.white70)),
                     SizedBox(height: 6),
                     Text("3", style: TextStyle(color: Colors.white, fontSize: 28, fontWeight: FontWeight.bold)),
                   ]),
@@ -52,8 +54,8 @@ class DashboardPage extends StatelessWidget {
                 child: Container(
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(color: Colors.green, borderRadius: BorderRadius.circular(12)),
-                  child: const Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                    Text("Low Stock", style: TextStyle(color: Colors.white70)),
+                  child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                    Text(l.lowStock, style: TextStyle(color: Colors.white70)),
                     SizedBox(height: 6),
                     Text("5", style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)),
                   ]),
@@ -64,14 +66,14 @@ class DashboardPage extends StatelessWidget {
             ElevatedButton(
               style: ElevatedButton.styleFrom(backgroundColor: orange, padding: const EdgeInsets.symmetric(vertical: 14)),
               onPressed: () => Navigator.pushNamed(context, "/shopping"),
-              child: const Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                 Icon(Icons.shopping_cart_outlined, color: Colors.white),
                 SizedBox(width: 8),
-                Text("Shopping List", style: TextStyle(color: Colors.white))
+                Text(l.shoppingList, style: TextStyle(color: Colors.white))
               ]),
             ),
             const SizedBox(height: 18),
-            const Text("Use soon", style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
+            Text(l.useSoon, style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
             const SizedBox(height: 8),
             Expanded(
               child: ListView.separated(
@@ -102,17 +104,18 @@ class DashboardPage extends StatelessWidget {
   }
 
   Widget _buildBottomNav(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
     return BottomAppBar(
       shape: const CircularNotchedRectangle(),
       notchMargin: 8,
       child: SizedBox(
         height: 66,
         child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround, children: [
-          const _NavItem(icon: Icons.home, label: "Dashboard", active: true),
-          _NavItem(icon: Icons.inventory_2_outlined, label: "Inventory", onTap: () => Navigator.pushNamed(context, "/inventory")),
+          _NavItem(icon: Icons.home, label: l.dashboard, active: true),
+          _NavItem(icon: Icons.inventory_2_outlined, label: l.inventory, onTap: () => Navigator.pushNamed(context, "/inventory")),
           const SizedBox(width: 48),
-          const _NavItem(icon: Icons.qr_code_scanner, label: "Scan"),
-          const _NavItem(icon: Icons.settings, label: "Settings"),
+          _NavItem(icon: Icons.qr_code_scanner, label: l.scan),
+          _NavItem(icon: Icons.settings, label: l.settings),
         ]),
       ),
     );

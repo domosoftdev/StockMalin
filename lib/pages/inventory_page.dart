@@ -1,15 +1,17 @@
 import "package:flutter/material.dart";
 import "package:provider/provider.dart";
 import "../providers/product_provider.dart";
+import '../l10n/app_localizations.dart';
 
 class InventoryPage extends StatelessWidget {
   const InventoryPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    final l = AppLocalizations.of(context)!;
     final prov = Provider.of<ProductProvider>(context);
     final items = prov.items;
     return Scaffold(
-      appBar: AppBar(title: const Text("Inventory"), backgroundColor: Colors.white, foregroundColor: Colors.black, elevation: 0),
+      appBar: AppBar(title: Text(l.inventory), backgroundColor: Colors.white, foregroundColor: Colors.black, elevation: 0),
       body: ListView.separated(
         padding: const EdgeInsets.all(12),
         itemCount: items.length,

@@ -5,6 +5,7 @@ import "pages/dashboard_page.dart";
 import "pages/inventory_page.dart";
 import "pages/item_detail_page.dart";
 import "pages/shopping_list_page.dart";
+import "l10n/app_localizations.dart";
 
 void main() {
   runApp(const StockMalinApp());
@@ -24,6 +25,8 @@ class StockMalinApp extends StatelessWidget {
           primaryColor: const Color(0xFF0F3B54),
           colorScheme: ColorScheme.fromSwatch().copyWith(secondary: const Color(0xFFF28A2E)),
         ),
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
         initialRoute: "/",
         routes: {
           "/": (_) => const DashboardPage(),

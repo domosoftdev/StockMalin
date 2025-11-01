@@ -1,0 +1,12 @@
+{
+  "inventory": "Inventory",
+  "shoppingList": "Shopping List",
+  "addItem": "Add Item",
+  "dashboard": "Dashboard",
+  "scan": "Scan",
+  "settings": "Settings",
+  "martinFamily": "Martin Family",
+  "perishableItems": "Perishable items",
+  "lowStock": "Low Stock",
+  "useSoon": "Use soon"
+}
