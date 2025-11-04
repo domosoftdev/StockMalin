@@ -11,6 +11,8 @@ void main() {
   );
 }
 
+import 'app_theme.dart';
+
 class StockHomeApp extends StatelessWidget {
   const StockHomeApp({super.key});
 
@@ -18,10 +20,7 @@ class StockHomeApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'StockHome',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+      theme: buildAppTheme(),
       home: const HomePage(),
     );
   }

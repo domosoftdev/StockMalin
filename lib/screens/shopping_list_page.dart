@@ -98,21 +98,24 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
   }
 
   Widget _buildListItem(ShoppingListItem item) {
+    final theme = Theme.of(context);
     return ListTile(
       leading: Checkbox(
         value: item.isChecked,
         onChanged: (_) {
           context.read<ShoppingListService>().toggleItemChecked(item);
         },
+        activeColor: theme.colorScheme.primary,
       ),
       title: Text(
         item.name,
-        style: TextStyle(
+        style: theme.textTheme.bodyText1?.copyWith(
           decoration: item.isChecked ? TextDecoration.lineThrough : null,
+          color: item.isChecked ? Colors.grey : theme.textTheme.bodyText1?.color,
         ),
       ),
       trailing: IconButton(
-        icon: const Icon(Icons.delete_outline, color: Colors.red),
+        icon: Icon(Icons.delete_outline, color: theme.colorScheme.error),
         onPressed: () {
           context.read<ShoppingListService>().removeItem(item);
         },
@@ -122,12 +125,17 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
   }
 
   Widget _buildActionButtons() {
+    final theme = Theme.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: theme.colorScheme.secondary,
+              foregroundColor: theme.colorScheme.onSecondary,
+            ),
             onPressed: () {
               context.read<ShoppingListService>().transferSelectedItems();
               ScaffoldMessenger.of(context).showSnackBar(
@@ -137,6 +145,10 @@ class _ShoppingListPageState extends State<ShoppingListPage> {
             child: const Text('Transférer la sélection'),
           ),
           ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: theme.colorScheme.primary,
+              foregroundColor: theme.colorScheme.onPrimary,
+            ),
             onPressed: () {
               context.read<ShoppingListService>().transferAllItems();
                ScaffoldMessenger.of(context).showSnackBar(
