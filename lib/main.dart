@@ -1,52 +1,42 @@
-import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'services/shopping_list_service.dart';
+import "package:flutter/material.dart";
+import "package:provider/provider.dart";
+import "providers/product_provider.dart";
+import "pages/dashboard_page.dart";
+import "pages/inventory_page.dart";
+import "pages/item_detail_page.dart";
+import "pages/shopping_list_page.dart";
 
 void main() {
-  runApp(
-    ChangeNotifierProvider(
-      create: (context) => ShoppingListService(),
-      child: const StockHomeApp(),
-    ),
-  );
+  runApp(const StockMalinApp());
 }
 
-import 'app_theme.dart';
-
-class StockHomeApp extends StatelessWidget {
-  const StockHomeApp({super.key});
+class StockMalinApp extends StatelessWidget {
+  const StockMalinApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'StockHome',
-      theme: buildAppTheme(),
-      home: const HomePage(),
-    );
-  }
-}
-
-import 'screens/shopping_list_page.dart';
-
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('StockHome'),
-      ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const ShoppingListPage()),
-            );
-          },
-          child: const Text('Voir la liste de courses'),
+    return ChangeNotifierProvider(
+      create: (_) => ProductProvider()..loadSample(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: "StockMalin",
+        theme: ThemeData(
+          primaryColor: const Color(0xFF0F3B54),
+          colorScheme: ColorScheme.fromSwatch().copyWith(secondary: const Color(0xFFF28A2E)),
         ),
+        initialRoute: "/",
+        routes: {
+          "/": (_) => const DashboardPage(),
+          "/inventory": (_) => const InventoryPage(),
+          "/shopping": (_) => const ShoppingListPage(),
+        },
+        onGenerateRoute: (settings) {
+          if (settings.name != null && settings.name!.startsWith("/item/")) {
+            final id = settings.name!.split("/").last;
+            return MaterialPageRoute(builder: (_) => ItemDetailPage(productId: id));
+          }
+          return null;
+        },
       ),
     );
   }
